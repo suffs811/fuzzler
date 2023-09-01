@@ -114,6 +114,7 @@ def fuzz(path):
 	if os.path.exists("fuzzRules.txt"):
 		now = datetime.now()
 		time = now.strftime("%H%M%S")
+		os.system("touch fuzzRules_{}.txt".format(time))
 		rulesFile = "fuzzRules_{}.txt".format(time)
 	else:
 		os.system("touch fuzzRules.txt")
