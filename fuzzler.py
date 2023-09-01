@@ -91,7 +91,7 @@ def crawl(ip, port):
 def extend():
 	with open("cewlPass.txt") as fp:
 		f = fp.readlines()
-		for str(line) in f:
+		for line in f:
 			print(line)
 			synset = wn.synsets(line)
 			if len(synset) != 0:
