@@ -97,9 +97,9 @@ def extend():
 			if len(synset) != 0:
 				for syn in synset:
 					setName = syn.split("'")[1]
-					print(setName)
 					names = wn.synset(setName).lemma_names()
 					for name in names:
+						print(name)
 						fp.append(name.strip())
 			else:
 				continue
@@ -117,6 +117,7 @@ def fuzz(path):
 		rulesFile = "fuzzRules_{}.txt".format(time)
 	else:
 		rulesFile = "fuzzRules.txt"
+	os.system("touch fuzzRules.txt")
 	with open(rulesFile) as r:
 		for rule in rules:
 			r.append(rule)
