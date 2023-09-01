@@ -89,7 +89,7 @@ def crawl(ip, port):
 
 # use natural language processing to add similar words to the list
 def extend():
-	with open("cewlPass.txt") as fp:
+	with open("cewlPass.txt", "r+") as fp:
 		f = fp.readlines()
 		for line in f:
 			print(line)
@@ -100,7 +100,7 @@ def extend():
 					names = wn.synset(setName).lemma_names()
 					for name in names:
 						print(name)
-						fp.append(name.strip())
+						fp.write(name.strip())
 			else:
 				continue
 
@@ -119,7 +119,7 @@ def fuzz(path):
 	else:
 		os.system("touch fuzzRules.txt")
 		rulesFile = "fuzzRules.txt"
-	with open(rulesFile, "w") as rw:
+	with open(rulesFile, "a") as r:
 		for rule in rules:
 			r.write(rule)
 
