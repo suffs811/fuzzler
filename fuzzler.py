@@ -11,6 +11,8 @@
 
 import os
 # install nltk library
+print("\n### downloading nltk library ###\n")
+os.system("python3 -m pip install --upgrade pip'")
 os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import argparse
 from datetime import datetime
