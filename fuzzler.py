@@ -116,9 +116,10 @@ def fuzz(path):
 		time = now.strftime("%H%M%S")
 		rulesFile = "fuzzRules_{}.txt".format(time)
 	else:
+		os.system("touch fuzzRules.txt")
 		rulesFile = "fuzzRules.txt"
-	os.system("touch fuzzRules.txt")
-	with open(rulesFile) as r:
+	with open(rulesFile) as rw:
+		r = rw.write()
 		for rule in rules:
 			r.append(rule)
 
