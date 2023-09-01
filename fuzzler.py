@@ -92,15 +92,16 @@ def extend():
 	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "w") as fw:
 		fr = fp.readlines()
 		for line in fr:
-			print(line)
 			synsets = wn.synsets(line)
-			if len(synsets) != 0:
+			if synsets:
 				for syn in synsets:
-					setName = syn.split("'")[1]
-					names = wn.synset(setName).lemma_names()
-					for name in names:
-						print(name)
-						fw.write(name.strip())
+					setSplit = syn.split("'")[1]]
+					setName = "'{}'".format(setSplit)
+					newWords = wn.synset(setName).lemma_names()
+					for word in newWords:
+						word = word.strip()
+						print(word)
+						fw.write(word)
 			else:
 				continue
 
