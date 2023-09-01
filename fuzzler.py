@@ -87,20 +87,25 @@ def crawl(ip, port):
 				continue
 
 
-# use NLP to add similar words to the list
+# use natural language processing to add similar words to the list
 def extend():
 	with open("cewlPass.txt") as fp:
 		f = fp.readlines()
-		for line in f:
+		for str(line) in f:
 			print(line)
-			synset = wn.synsets(line[0])
-			print(synset)
-			syns = wn.synset(synset).lemma_names()
-			for syn in syns:
-				fp.append(syn)
+			synset = wn.synsets(line)
+			if len(synset) != 0:
+				for syn in synset:
+					setName = syn.split("'")[1]
+					print(setName)
+					names = wn.synset(setName).lemma_names()
+					for name.strip() in names:
+						fp.append(name)
+			else:
+				continue
 
 
-# fuzz the list of passwords
+# fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, translate to 1337 speak
 def fuzz(path):
 	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', '$?d', '$?d$?d', '$?d$?d$?d', '$?d$?d$?d$?d', '^?d', '^?d^?d', '^?d^?d^?d', '^?d^?d^?d^?d', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
