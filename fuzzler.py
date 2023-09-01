@@ -5,11 +5,13 @@
 # read the README.md file for more details; software distributed under MIT license; for personal, legal use only.
 #
 # usage: python3 fuzzler.py -t <target_ip>
+#
+# note <> you may have to specify the specific version of python3 you are running (i.e. python3.6 || python3.9 etc.)
 
 
 import os
 # install nltk library
-os.system("pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
+os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import argparse
 from datetime import datetime
 from nltk.corpus import wordnet as wn
