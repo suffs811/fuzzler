@@ -119,10 +119,9 @@ def fuzz(path):
 	else:
 		os.system("touch fuzzRules.txt")
 		rulesFile = "fuzzRules.txt"
-	with open(rulesFile) as rw:
-		r = rw.write()
+	with open(rulesFile, "w") as rw:
 		for rule in rules:
-			r.append(rule)
+			r.write(rule)
 
 		passFile = "cewlPass.txt"
 		os.system("hashcat --force {} -r {} > {}".format(passFile, rulesFile, path))
