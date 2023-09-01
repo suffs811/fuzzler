@@ -8,6 +8,8 @@
 
 
 import os
+# install nltk library
+os.system("pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import argparse
 from datetime import datetime
 from nltk.corpus import wordnet as wn
@@ -31,7 +33,6 @@ def preCheck():
 	print("\n### downloading necessary tools and libraries ###\n")
 	os.system("sudo apt install cewl")
 	os.system("sudo apt install hashcat")
-	os.system("pip install nltk")
 
 	# check for fuzzes.txt; if exists, return new unique file name using datetime
 	if os.path.exists("fuzzes.txt"):
