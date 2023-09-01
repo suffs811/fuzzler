@@ -13,7 +13,6 @@ os.system("pip install nltk || echo '*** error installing nltk; please install m
 import argparse
 from datetime import datetime
 from nltk.corpus import wordnet as wn
-import nltk
 
 
 # set up arguments for script
