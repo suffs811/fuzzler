@@ -6,7 +6,8 @@
 #
 # usage: python3 fuzzler.py -t <target_ip>
 #
-# note <> you may have to specify the specific version of python3 you are running (i.e. python3.6 || python3.9 etc.)
+# note <> you may have to specify the specific version of python3 you are running:
+# (python3.6 fuzzler.py ... || python3.9 fuzzler.py ... etc.)
 
 
 import os
