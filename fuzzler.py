@@ -62,12 +62,13 @@ def preCheck():
 
 # crawl the webpage and gather words for password list
 def crawl(ip, port):
-
+	
 	# check if port was specified, use default if not
 	if port:
 		tport = port
 	else:
 		tport = "80"
+	print("\n### crawling {}:{} ###".format(ip, tport))
 	os.system("cewl -d 2 -m 3 -e -w cewlPass.txt http://{}:{}".format(ip, tport))
 
 	# find emails and grab username and domain, add to list
@@ -88,6 +89,7 @@ def crawl(ip, port):
 
 # use natural language processing to add similar words to the list
 def extend():
+	print("\n### generating new words with npl ###")
 	os.system("touch prePass.txt")
 	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "w") as fw:
 		fr = fp.readlines()
@@ -108,6 +110,7 @@ def extend():
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, translate to 1337 speak
 def fuzz(path):
+	print("\n### fuzzing word list with hashcat ###")
 	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', '$?d', '$?d$?d', '$?d$?d$?d', '$?d$?d$?d$?d', '^?d', '^?d^?d', '^?d^?d^?d', '^?d^?d^?d^?d', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
