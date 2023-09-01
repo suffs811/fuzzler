@@ -130,7 +130,7 @@ def fuzz(path):
 # count number of passwords generated
 def countPass(path):
 
-	with open("{}".path) as fr:
+	with open(path) as fr:
 		f = fr.readlines()
 		counter = 0
 		for line in f:
