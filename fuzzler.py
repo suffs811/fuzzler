@@ -95,7 +95,7 @@ def extend():
 			synsets = wn.synsets(line)
 			if synsets:
 				for syn in synsets:
-					setSplit = syn.split("'")[1]]
+					setSplit = syn.split("'")[1]
 					setName = "'{}'".format(setSplit)
 					newWords = wn.synset(setName).lemma_names()
 					for word in newWords:
