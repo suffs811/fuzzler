@@ -91,9 +91,9 @@ def crawl(ip, port):
 def extend():
 	with open("cewlPass.txt") as fp:
 		f = fp.readlines()
-		for word in f:
-			print(word)
-			synset = wn.synsets(word)
+		for line in f:
+			print(line)
+			synset = wn.synsets(line[0])
 			print(synset)
 			syns = wn.synset(synset).lemma_names()
 			for syn in syns:
