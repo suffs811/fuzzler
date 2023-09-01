@@ -54,10 +54,10 @@ def preCheck():
 		else:
 			print("\n*** please specify either 'y' or 'n' ***")
 			preCheck()
+		return nFile
 	else:
 		nFile = "fuzzes.txt"
-
-	return nFile
+		return nFile
 
 
 # crawl the webpage and gather words for password list
