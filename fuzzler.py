@@ -111,20 +111,20 @@ def fuzz(path):
 	rulesFile = ""
 
 	# check if the hascat rules file exists; if exists, create unique file name
-	if os.path.exists("fuzzRules.txt"):
+	if os.path.exists("fuzz.rule"):
 		now = datetime.now()
 		time = now.strftime("%H%M%S")
-		os.system("touch fuzzRules_{}.txt".format(time))
-		rulesFile = "fuzzRules_{}.txt".format(time)
+		os.system("touch fuzz_{}.rule".format(time))
+		rulesFile = "fuzz_{}.rule".format(time)
 	else:
-		os.system("touch fuzzRules.txt")
-		rulesFile = "fuzzRules.txt"
+		os.system("touch fuzz.rule")
+		rulesFile = "fuzz.rule"
 	with open(rulesFile, "a") as r:
 		for rule in rules:
 			r.write(rule)
 
 		passFile = "cewlPass.txt"
-		os.system("hashcat --force {} -r {} > {}".format(passFile, rulesFile, path))
+		os.system("hashcat --force -a 0 -r {} {} > {}".format(passFile, rulesFile, path))
 
 
 # count number of passwords generated
