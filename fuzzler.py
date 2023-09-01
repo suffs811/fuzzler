@@ -99,8 +99,8 @@ def extend():
 					setName = syn.split("'")[1]
 					print(setName)
 					names = wn.synset(setName).lemma_names()
-					for name.strip() in names:
-						fp.append(name)
+					for name in names:
+						fp.append(name.strip())
 			else:
 				continue
 
