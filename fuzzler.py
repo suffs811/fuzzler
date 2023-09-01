@@ -92,6 +92,7 @@ def extend():
 	with open("cewlPass.txt") as fp:
 		f = fp.readlines()
 		for word in f:
+			print(word)
 			synset = wn.synsets(word)
 			print(synset)
 			syns = wn.synset(synset).lemma_names()
