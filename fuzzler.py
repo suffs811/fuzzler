@@ -120,7 +120,7 @@ def fuzz(path):
 		rulesFile = "fuzz.rule"
 	with open(rulesFile, "a") as r:
 		for rule in rules:
-			r.write(rule)
+			r.write(rule+"\n")
 
 		passFile = "cewlPass.txt"
 		os.system("hashcat --force -a 0 -r {} {} > {}".format(passFile, rulesFile, path))
