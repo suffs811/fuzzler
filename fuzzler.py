@@ -20,6 +20,7 @@ os.system("python3 -m pip install --upgrade pip'")
 os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import nltk
 nltk.download("wordnet")
+nltk.download("omw-1.4")
 from nltk.corpus import wordnet as wn
 
 
