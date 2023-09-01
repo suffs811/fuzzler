@@ -11,12 +11,15 @@
 
 
 import os
+import argparse
+from datetime import datetime
+
 # install nltk library
 print("\n### downloading nltk library ###\n")
 os.system("python3 -m pip install --upgrade pip'")
 os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
-import argparse
-from datetime import datetime
+import nltk
+nltk.download("wordnet")
 from nltk.corpus import wordnet as wn
 
 
