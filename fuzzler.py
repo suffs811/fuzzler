@@ -31,7 +31,6 @@ parser.add_argument("-p", "--port", help="specify target port (default=80)")
 args = parser.parse_args()
 ip = args.targetip
 port = args.port
-nFile = ""
 
 
 # ensure necessary tools are downloaded and check if fuzzed pswd file already exists
@@ -44,7 +43,7 @@ def preCheck():
 
 	# check for fuzzes.txt; if exists, return new unique file name using datetime
 	if os.path.exists("fuzzes.txt"):
-		answer = input("\n *** fuzzes.txt already exists, do you want to replace it? (y/n) ***")
+		answer = input("\n *** fuzzes.txt already exists, do you want to replace it? (y/n) ***\n")
 		if answer.lower() == "y":
 			os.system("rm -f fuzzes.txt")
 		elif answer.lower() == "n":
