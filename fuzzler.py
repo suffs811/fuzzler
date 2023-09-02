@@ -128,7 +128,7 @@ def fuzz(path):
 			r.write(rule+"\n")
 
 		passFile = "prePass.txt"
-		os.system("hashcat --force -a 0 -r {} {} > {}".format(passFile, rulesFile, path))
+		os.system("hashcat --force -r {} {} -o {}".format(passFile, rulesFile, path))
 
 
 # count number of passwords generated
