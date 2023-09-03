@@ -88,24 +88,18 @@ def crawl(ip, port):
 
 
 # use natural language processing to add similar words to the list
-def extendWrite(syn):
-	with open("prePass.txt", "a") as fw:
-		syn = syn[0]
-		newWords = [str(lemma.name()) for lemma in syn.lemmas()]
-		for word in newWords:
-			word = word.strip()
-			print(word)
-			fw.write(word)
-	
 def extend():
 	print("\n### generating new words with npl ###")
 	os.system("touch prePass.txt")
-	with open("cewlPass.txt", "r") as fp:
+	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "a") as fw::
 		fr = fp.readlines()
-		for word in fr:
-			syn = wn.synsets(word)
-			if syn:
-				extendWrite(syn)
+		for line in fr:
+			synset = wn.synsets(line)
+			if synset:
+				for syn in synset:
+					newWords = [str(lemma.name()) for lemma in syn.lemmas()]
+					for word in newWords:
+						fw.write(word.strip())
 			else:
 				continue
 
