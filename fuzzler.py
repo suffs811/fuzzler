@@ -100,7 +100,7 @@ def extendWrite(word):
 def extend():
 	print("\n### generating new words with npl ###")
 	os.system("touch prePass.txt")
-	with open("cewlPass.txt", "r") as fp
+	with open("cewlPass.txt", "r") as fp:
 		fr = fp.readlines()
 		for word in fr:
 			syn = wn.synsets(word)
