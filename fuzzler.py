@@ -91,7 +91,7 @@ def crawl(ip, port):
 def extend():
 	print("\n### generating new words with npl ###")
 	os.system("touch prePass.txt")
-	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "a") as fw::
+	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "a") as fw:
 		fr = fp.readlines()
 		for line in fr:
 			synset = wn.synsets(line)
