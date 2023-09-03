@@ -88,7 +88,7 @@ def crawl(ip, port):
 
 
 # use natural language processing to add similar words to the list
-def extendWrite(word):
+def extendWrite(syn):
 	with open("prePass.txt", "a") as fw:
 		syn = syn[0]
 		newWords = [str(lemma.name()) for lemma in syn.lemmas()]
