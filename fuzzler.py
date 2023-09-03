@@ -94,12 +94,16 @@ def extend():
 	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "w") as fw:
 		fr = fp.readlines()
 		for word in fr:
-			syn = wn.synsets(word)[0]
-			newWords = [str(lemma.name()) for lemma in syn.lemmas()]
-			for word in newWords:
-				word = word.strip()
-				print(word)
-				fw.write(word)
+			syn = wn.synsets(word)
+			if syn:
+				syn = syn[0]
+				newWords = [str(lemma.name()) for lemma in syn.lemmas()]
+				for word in newWords:
+					word = word.strip()
+					print(word)
+					fw.write(word)
+			else:
+				continue
 
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, translate to 1337 speak
