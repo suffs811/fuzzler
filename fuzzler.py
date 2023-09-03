@@ -93,19 +93,13 @@ def extend():
 	os.system("touch prePass.txt")
 	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "w") as fw:
 		fr = fp.readlines()
-		for line in fr:
-			synsets = wn.synsets(line)
-			if synsets:
-				for syn in synsets:
-					setSplit = syn.split("'")[1]
-					setName = "'{}'".format(setSplit)
-					newWords = wn.synset(setName).lemma_names()
-					for word in newWords:
-						word = word.strip()
-						print(word)
-						fw.write(word)
-			else:
-				continue
+		for word in fr:
+			syn = wn.synsets(word)[0]
+			newWords = [str(lemma.name()) for lemma in syn.lemmas()]
+			for word in newWords:
+				word = word.strip()
+				print(word)
+				fw.write(word)
 
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, translate to 1337 speak
