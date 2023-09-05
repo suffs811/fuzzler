@@ -13,11 +13,15 @@
 import os
 import argparse
 from datetime import datetime
+import sys
 
 # install nltk library
 print("\n### downloading nltk library ###\n")
 os.system("python3 -m pip install --upgrade pip")
-os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
+if "nltk" in sys.modules:
+        continue
+else:
+	os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import nltk
 nltk.download("wordnet")
 nltk.download("omw-1.4")
@@ -38,8 +42,14 @@ def preCheck():
 
 	# download cewl and hashcat
 	print("\n### downloading necessary tools and libraries ###\n")
-	os.system("sudo apt install cewl")
-	os.system("sudo apt install hashcat")
+
+	deps = ["cewl", "hashcat"]
+	for dep in deps:
+      		exists = os.system("which {}".format(dep))
+	      	if exists == 0:
+	        	continue
+		else:
+			os.system("sudo apt install {}".format(dep))
 
 	# check for fuzzes.txt; if exists, return new unique file name using datetime
 	if os.path.exists("fuzzes.txt"):
