@@ -99,7 +99,7 @@ def crawl(ip, port):
 
 # use natural language processing to add similar words to the list
 def extend():
-	print("\n### generating new words with npl ###")
+	print("\n### generating new words with nlp ###")
 	os.system("touch prePass.txt")
 	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "a") as fw:
 		fr = fp.readlines()
