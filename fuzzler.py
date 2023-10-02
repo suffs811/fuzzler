@@ -19,7 +19,7 @@ import sys
 print("\n### downloading nltk library ###\n")
 os.system("python3 -m pip install --upgrade pip")
 if "nltk" in sys.modules:
-        continue
+	continue
 else:
 	os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
 import nltk
