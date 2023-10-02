@@ -48,8 +48,8 @@ def preCheck():
       		exists = os.system("which {}".format(dep))
 	      	if exists == 0:
 	        	continue
-		else:
-			os.system("sudo apt install {}".format(dep))
+			else:
+				os.system("sudo apt install {}".format(dep))
 
 	# check for fuzzes.txt; if exists, return new unique file name using datetime
 	if os.path.exists("fuzzes.txt"):
