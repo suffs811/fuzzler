@@ -4,7 +4,7 @@
 # https://github.com/suffs811/fuzzler.git
 # read the README.md file for more details; software distributed under MIT license; for personal, legal use only.
 #
-# usage: python3 fuzzler.py -t <target_ip>
+# usage: python3 fuzzler.py -t <target_ip> (optional -p to specify port other than 80)
 #
 # note <> you may have to specify the specific version of python3 you are running:
 # (python3.6 fuzzler.py ... || python3.9 fuzzler.py ... etc.)
