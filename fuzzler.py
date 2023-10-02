@@ -46,7 +46,7 @@ def preCheck():
 	deps = ["cewl", "hashcat"]
 	for dep in deps:
       		exists = os.system("which {}".format(dep))
-	      	if exists == 0:
+	    if exists == 0:
 			continue
 		else:
 			os.system("sudo apt install {}".format(dep))
