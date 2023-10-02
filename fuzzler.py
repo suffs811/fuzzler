@@ -47,7 +47,7 @@ def preCheck():
 	for dep in deps:
       		exists = os.system("which {}".format(dep))
 	      	if exists == 0:
-	        	continue
+			continue
 		else:
 			os.system("sudo apt install {}".format(dep))
 
