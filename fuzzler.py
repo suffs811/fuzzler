@@ -36,6 +36,20 @@ args = parser.parse_args()
 ip = args.targetip
 port = args.port
 
+print('''
+### ###  ##  ###  ### ##   ### ##   ####     ### ###  ### ##   
+ ##  ##  ##   ##  ##  ##   ##  ##    ##       ##  ##   ##  ##  
+ ##      ##   ##     ##       ##     ##       ##       ##  ##  
+ ## ##   ##   ##    ##       ##      ##       ## ##    ## ##   
+ ##      ##   ##   ##       ##       ##       ##       ## ##   
+ ##      ##   ##  ##  ##   ##  ##    ##  ##   ##  ##   ##  ##  
+####      ## ##   # ####   # ####   ### ###  ### ###  #### ##   
+\n
+\\ created by: suffs811
+\\ https://github.com/suffs811/fuzzler.git
+''')
+
+time.sleep(2)
 
 # ensure necessary tools are downloaded and check if fuzzed pswd file already exists
 def preCheck():
