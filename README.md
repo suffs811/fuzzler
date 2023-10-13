@@ -11,7 +11,7 @@ These operations allow Fuzzler to generate incredibly sophisticated wordlists th
 
 Feel free to break Fuzzler and let me know how I can make it better!
 
-# credit and license
+## credit and license
 Copyright (c) 2023 suffs811
 
 https://github.com/suffs811
