@@ -113,6 +113,13 @@ def crawl(ip, port):
 			else:
 				continue
 
+	with open("cewlPass.txt") as fr:
+		counter = 0
+		f = fr.readlines()
+		for line in f:
+			counter += 1
+		print("\n-+- # words from webpage: " + counter + "-+-")
+
 
 # use natural language processing to add similar words to the list
 def extend(ip):
@@ -137,6 +144,13 @@ def extend(ip):
 		for i in addWords:
 			fw.write(i.strip())
 			fw.write("\n")
+
+	with open("prePass_{}.txt".format(ip)) as fr:
+		counter = 0
+		f = fr.readlines()
+		for line in f:
+			counter += 1
+		print("\n-+- # words after applying AI/NLP: " + counter + "-+-")
 
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
@@ -166,10 +180,8 @@ def fuzz(ip, path):
 	
 	os.system("mp32 -o mp.rule '$?d'")
 	os.system("mp32 -o mp.rule '$?d$?d'")
-	os.system("mp32 -o mp.rule '$?d$?d$?d'")
 	os.system("mp32 -o mp.rule '^?d'")
 	os.system("mp32 -o mp.rule '^?d^?d'")
-	os.system("mp32 -o mp.rule '^?d^?d^?d'")
 
 	passFile = "prePass_{}.txt".format(ip)
 	outputFile = "preUnique.txt"
