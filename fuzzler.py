@@ -33,11 +33,11 @@ time.sleep(2)
 
 # install nltk library
 print("\n### downloading nltk library ###\n")
-os.system("python3 -m pip install --upgrade pip")
+os.system("python3 -m pip install --upgrade pip -qq")
 if "nltk" in sys.modules:
 	print("nltk library already installed")
 else:
-	os.system("python3 -m pip install nltk || echo '*** error installing nltk; please install manually before proceeding ***'")
+	os.system("python3 -m pip install nltk -qq || echo '*** error installing nltk; please install manually before proceeding ***'")
 import nltk
 nltk.download("wordnet")
 nltk.download("omw-1.4")
