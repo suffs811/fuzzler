@@ -95,7 +95,7 @@ def crawl(ip, port):
 		tport = port
 	else:
 		tport = "80"
-	print("\n### crawling {}:{} ###".format(ip, tport))
+	print("\n### crawling {}:{} ###\n".format(ip, tport))
 	os.system("cewl -d 2 -m 3 -e -w cewlPass.txt http://{}:{}".format(ip, tport))
 
 	# find emails and grab username and domain, add to list
