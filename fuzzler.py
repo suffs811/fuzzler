@@ -141,7 +141,7 @@ def extend(ip):
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
 def fuzz(path):
 	print("\n### fuzzing word list with hashcat ###")
-	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', '$?d', '$?d$?d', '$?d$?d$?d', '$?d$?d$?d$?d', '^?d', '^?d^?d', '^?d^?d^?d', '^?d^?d^?d^?d', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
+	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd','sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
 	# check if the hascat rules file exists; if exists, create unique file name
@@ -158,7 +158,7 @@ def fuzz(path):
 			r.write(rule+"\n")
 
 		passFile = "prePass_{}.txt".format(ip)
-		os.system("hashcat --force {} -r {} -o {}".format(passFile, rulesFile, path))
+		os.system("hashcat --stdout {} -r {} > {}".format(passFile, rulesFile, path))
 
 
 # count number of passwords generated
