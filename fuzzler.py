@@ -157,7 +157,7 @@ def extend(ip):
 def fuzz(ip, path):
 	print("\n### fuzzing word list with hashcat ###")
 	print("\n-+- this may take up to a few minutes -+-\n")
-	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
+	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
 	# check if the hascat rules file exists; if exists, create unique file name
