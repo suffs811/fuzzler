@@ -173,6 +173,7 @@ def countPass(path):
 				counter += 1
 	except:
 		print("\n*** Error occurred: Password list not generated ***")
+		print("\n*** You might need to increase your VM's RAM (at least 4GB suggested) ***")
 
 	return counter
 
