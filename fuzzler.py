@@ -158,7 +158,22 @@ def fuzz(path):
 			r.write(rule+"\n")
 
 		passFile = "prePass_{}.txt".format(ip)
-		os.system("hashcat --stdout {} -r {} > {}".format(passFile, rulesFile, path))
+		os.system("hashcat --stdout {} -r {} > preUnique.txt".format(passFile, rulesFile))
+
+	os.system("rm -f {}".format(rulesFile))
+
+	
+	with open("preUnique.txt", "r") as allWords, open(path, "a") as wu:
+		unique = []
+		a = allWords.readlines()
+		for line in a:
+			if line not in unique:
+				unique.append(line)
+			else:
+				continue
+		for u in unique:
+			wu.write(u.strip())
+			wu.write("\n")
 
 
 # count number of passwords generated
@@ -184,6 +199,8 @@ crawl(ip, port)
 extend(ip)
 fuzz(path)
 count = countPass(path)
+
+os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
 
 if count > 0:
 	print("\n-+- {} tailored passwords generated -+-".format(count))
