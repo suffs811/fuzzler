@@ -173,10 +173,10 @@ def fuzz(ip, path):
 
 	passFile = "prePass_{}.txt".format(ip)
 	outputFile = "preUnique.txt"
-	print(rulesFile)
 	os.system("hashcat --stdout {} -r {} -r mp.rule > {}".format(passFile, rulesFile, outputFile))
 		
-	#os.system("rm -f {}".format(rulesFile))
+	os.system("rm -f {}".format(rulesFile))
+	os.system("rm -f mp.rule")
 
 	
 	with open(outputFile, "r") as allWords, open(path, "a") as wu:
@@ -213,7 +213,7 @@ extend(ip)
 fuzz(ip, path)
 count = countPass(path)
 
-#os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
+os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
 
 if count > 0:
 	print("\n-+- {} tailored passwords generated -+-".format(count))
