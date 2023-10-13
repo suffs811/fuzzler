@@ -69,7 +69,7 @@ def preCheck():
 
 	# check for fuzzes.txt; if exists, return new unique file name using datetime
 	if os.path.exists("fuzzes.txt"):
-		answer = input("\n *** fuzzes.txt already exists, do you want to replace it? (y/n) ***\n")
+		answer = input("\n *** fuzzes.txt (password file) already exists, do you want to replace it? (y/n) ***\n")
 		if answer.lower() == "y":
 			os.system("rm -f fuzzes.txt")
 			nFile = "fuzzes.txt"
@@ -118,7 +118,7 @@ def crawl(ip, port):
 		f = fr.readlines()
 		for line in f:
 			counter += 1
-		print("\n-+- # words from webpage: " + str(counter) + " -+-")
+		print("\n-+- # words from webpage: " + str(counter) + " -+-\n")
 
 
 # use natural language processing to add similar words to the list
@@ -150,13 +150,13 @@ def extend(ip):
 		f = fr.readlines()
 		for line in f:
 			counter += 1
-		print("\n-+- # words after applying AI/NLP: " + str(counter) + " -+-")
+		print("\n-+- # words after applying AI/NLP: " + str(counter) + " -+-\n")
 
 
-# fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
+# fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-99, and translate to 1337 speak
 def fuzz(ip, path):
 	print("\n### fuzzing word list with hashcat ###")
-	print("\n-+- this may take up to a few minutes -+-")
+	print("\n-+- this may take up to a few minutes -+-\n")
 	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
