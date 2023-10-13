@@ -72,6 +72,7 @@ def preCheck():
 		answer = input("\n *** fuzzes.txt already exists, do you want to replace it? (y/n) ***\n")
 		if answer.lower() == "y":
 			os.system("rm -f fuzzes.txt")
+			nFile = "fuzzes.txt"
 		elif answer.lower() == "n":
 			# get current time to make unique file name
 			now = datetime.now()
