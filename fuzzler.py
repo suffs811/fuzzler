@@ -157,11 +157,24 @@ def fuzz(ip, path):
 	with open(rulesFile, "a") as r:
 		for rule in rules:
 			r.write(rule+"\n")
+			
+	# use hashcat maskprocessor to make rule file if mp32 binary exists
+	exists = os.system("which mp32")
+
+	if exists != 0:
+		os.system("sudo apt install maskprocessor")
+	
+	os.system("mp32 -o mp.rule '$?d'")
+	os.system("mp32 -o mp.rule '$?d$?d'")
+	os.system("mp32 -o mp.rule '$?d$?d$?d'")
+	os.system("mp32 -o mp.rule '^?d'")
+	os.system("mp32 -o mp.rule '^?d^?d'")
+	os.system("mp32 -o mp.rule '^?d^?d^?d'")
 
 	passFile = "prePass_{}.txt".format(ip)
 	outputFile = "preUnique.txt"
 	print(rulesFile)
-	os.system("hashcat --stdout {} -r {} > {}".format(passFile, rulesFile, outputFile))
+	os.system("hashcat --stdout {} -r {} -r mp.rule > {}".format(passFile, rulesFile, outputFile))
 		
 	#os.system("rm -f {}".format(rulesFile))
 
