@@ -11,6 +11,17 @@ These operations allow Fuzzler to generate incredibly sophisticated wordlists th
 
 Feel free to break Fuzzler and let me know how I can make it better!
 
+## usage
+download Fuzzler:
+
+`got clone https://www.github.com/suffs811/fuzzler.git`
+
+use fuzzler to generate wordlist:
+
+`python3 fuzzler.py -t 10.10.10.10 -p 8080` 
+
+**the final password list will be in 'fuzzes.txt'**
+
 ## credit and license
 Copyright (c) 2023 suffs811
 
