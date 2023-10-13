@@ -140,9 +140,9 @@ def extend(ip):
 
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
-def fuzz(path):
+def fuzz(ip, path):
 	print("\n### fuzzing word list with hashcat ###")
-	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd','sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
+	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
 	# check if the hascat rules file exists; if exists, create unique file name
@@ -158,13 +158,15 @@ def fuzz(path):
 		for rule in rules:
 			r.write(rule+"\n")
 
-		passFile = "prePass_{}.txt".format(ip)
-		os.system("hashcat --stdout {} -r {} > preUnique.txt".format(passFile, rulesFile))
-
-	os.system("rm -f {}".format(rulesFile))
+	passFile = "prePass_{}.txt".format(ip)
+	outputFile = "preUnique.txt"
+	print(rulesFile)
+	os.system("hashcat --stdout {} -r {} > {}".format(passFile, rulesFile, outputFile))
+		
+	#os.system("rm -f {}".format(rulesFile))
 
 	
-	with open("preUnique.txt", "r") as allWords, open(path, "a") as wu:
+	with open(outputFile, "r") as allWords, open(path, "a") as wu:
 		unique = []
 		a = allWords.readlines()
 		for line in a:
@@ -173,8 +175,7 @@ def fuzz(path):
 			else:
 				continue
 		for u in unique:
-			wu.write(u.strip())
-			wu.write("\n")
+			wu.write(u.strip()+"\n")
 
 
 # count number of passwords generated
@@ -198,10 +199,10 @@ def countPass(path):
 path = preCheck()
 crawl(ip, port)
 extend(ip)
-fuzz(path)
+fuzz(ip, path)
 count = countPass(path)
 
-os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
+#os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
 
 if count > 0:
 	print("\n-+- {} tailored passwords generated -+-".format(count))
