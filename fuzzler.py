@@ -118,7 +118,7 @@ def crawl(ip, port):
 		f = fr.readlines()
 		for line in f:
 			counter += 1
-		print("\n-+- # words from webpage: " + counter + "-+-")
+		print("\n-+- # words from webpage: " + str(counter) + " -+-")
 
 
 # use natural language processing to add similar words to the list
@@ -150,12 +150,13 @@ def extend(ip):
 		f = fr.readlines()
 		for line in f:
 			counter += 1
-		print("\n-+- # words after applying AI/NLP: " + counter + "-+-")
+		print("\n-+- # words after applying AI/NLP: " + str(counter) + " -+-")
 
 
 # fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
 def fuzz(ip, path):
 	print("\n### fuzzing word list with hashcat ###")
+	print("\n-+- this may take up to a few minutes -+-")
 	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
 	rulesFile = ""
 
@@ -173,7 +174,7 @@ def fuzz(ip, path):
 			r.write(rule+"\n")
 			
 	# use hashcat maskprocessor to make rule file if mp32 binary exists
-	exists = os.system("which mp32")
+	exists = os.system("which mp32 >/dev/null")
 
 	if exists != 0:
 		os.system("sudo apt install maskprocessor")
@@ -228,7 +229,13 @@ count = countPass(path)
 os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
 
 if count > 0:
-	print("\n-+- {} tailored passwords generated -+-".format(count))
-	print("\n#################################")
-	print("### password list saved to {} ###".format(path))
-	print("#################################")
+	if len(path.split("_")) = 1:
+		print("\n-+- {} tailored passwords generated -+-".format(count))
+		print("\n#########################################")
+		print("### password list saved to fuzzes.txt ###")
+		print("#########################################")
+	else:
+		print("\n-+- {} tailored passwords generated -+-".format(count))
+		print("\n################################################")
+		print("### password list saved to {} ###".format(path))
+		print("################################################")
