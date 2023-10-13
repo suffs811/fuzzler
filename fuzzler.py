@@ -181,18 +181,16 @@ def fuzz(ip, path):
 # count number of passwords generated
 def countPass(path):
 	
-	counter = 0
-	
 	try:
 		with open(path) as fr:
+			counter = 0
 			f = fr.readlines()
 			for line in f:
 				counter += 1
+			return counter
 	except:
 		print("\n*** Error occurred: Password list not generated ***")
 		print("\n*** You might need to increase your VM's RAM (at least 4GB suggested) ***")
-
-	return counter
 
 
 # call functions
