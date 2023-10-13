@@ -14,6 +14,22 @@ import os
 import argparse
 from datetime import datetime
 import sys
+import time
+
+print('''
+### ###  ##  ###  ### ##   ### ##   ####     ### ###  ### ##
+ ##  ##  ##   ##  ##  ##   ##  ##    ##       ##  ##   ##  ##
+ ##      ##   ##     ##       ##     ##       ##       ##  ##
+ ## ##   ##   ##    ##       ##      ##       ## ##    ## ##
+ ##      ##   ##   ##       ##       ##       ##       ## ##
+ ##      ##   ##  ##  ##   ##  ##    ##  ##   ##  ##   ##  ##
+####      ## ##   # ####   # ####   ### ###  ### ###  #### ##
+\n
+\\ created by: suffs811
+\\ https://github.com/suffs811/fuzzler.git
+''')
+
+time.sleep(2)
 
 # install nltk library
 print("\n### downloading nltk library ###\n")
@@ -36,20 +52,6 @@ args = parser.parse_args()
 ip = args.targetip
 port = args.port
 
-print('''
-### ###  ##  ###  ### ##   ### ##   ####     ### ###  ### ##   
- ##  ##  ##   ##  ##  ##   ##  ##    ##       ##  ##   ##  ##  
- ##      ##   ##     ##       ##     ##       ##       ##  ##  
- ## ##   ##   ##    ##       ##      ##       ## ##    ## ##   
- ##      ##   ##   ##       ##       ##       ##       ## ##   
- ##      ##   ##  ##  ##   ##  ##    ##  ##   ##  ##   ##  ##  
-####      ## ##   # ####   # ####   ### ###  ### ###  #### ##   
-\n
-\\ created by: suffs811
-\\ https://github.com/suffs811/fuzzler.git
-''')
-
-time.sleep(2)
 
 # ensure necessary tools are downloaded and check if fuzzed pswd file already exists
 def preCheck():
@@ -112,23 +114,31 @@ def crawl(ip, port):
 
 
 # use natural language processing to add similar words to the list
-def extend():
+def extend(ip):
 	print("\n### generating new words with nlp ###")
-	os.system("touch prePass.txt")
-	with open("cewlPass.txt", "r") as fp, open("prePass.txt", "a") as fw:
+	os.system("touch prePass_{}.txt".format(ip))
+	with open("cewlPass.txt", "r") as fp, open("prePass_{}.txt".format(ip), "a") as fw:
 		fr = fp.readlines()
+		sets = []
+		addWords = []
 		for line in fr:
-			synset = wn.synsets(line)
+			sets.append(line.lower().strip())
+		for s in sets:
+			synset = wn.synsets(s)
 			if synset:
 				for syn in synset:
 					newWords = [str(lemma.name()) for lemma in syn.lemmas()]
-					for word in newWords:
-						fw.write(word.strip())
+					for w in newWords:
+						addWords.append(w.strip())
 			else:
 				continue
+		addWords = list(set(addWords))
+		for i in addWords:
+			fw.write(i.strip())
+			fw.write("\n")
 
 
-# fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, translate to 1337 speak
+# fuzz the list of words (lowercase, uppercase, capitalize, capitalize all but first letter, reverse word, prepend/append digits 0-9999, and translate to 1337 speak
 def fuzz(path):
 	print("\n### fuzzing word list with hashcat ###")
 	rules = [':', 'l', 'u', 'c', 'C', 't', 'r', 'd', '$?d', '$?d$?d', '$?d$?d$?d', '$?d$?d$?d$?d', '^?d', '^?d^?d', '^?d^?d^?d', '^?d^?d^?d^?d', 'sa@', 'sa4', 'se3', 'sl1', 'sa@ se3 sl1', 'sa4 se3 sl1']
@@ -147,8 +157,8 @@ def fuzz(path):
 		for rule in rules:
 			r.write(rule+"\n")
 
-		passFile = "prePass.txt"
-		os.system("hashcat --force -r {} {} -o {}".format(passFile, rulesFile, path))
+		passFile = "prePass_{}.txt".format(ip)
+		os.system("hashcat --force {} -r {} -o {}".format(passFile, rulesFile, path))
 
 
 # count number of passwords generated
@@ -170,10 +180,12 @@ def countPass(path):
 # call functions
 path = preCheck()
 crawl(ip, port)
-extend()
+extend(ip)
 fuzz(path)
 count = countPass(path)
 
 if count > 0:
 	print("\n-+- {} tailored passwords generated -+-".format(count))
-	print("\n### password list saved to {} ###".format(path))
+	print("\n#################################")
+	print("### password list saved to {} ###".format(path))
+	print("#################################")
