@@ -229,7 +229,7 @@ count = countPass(path)
 os.system("rm -f cewlPass.txt prePass_{}.txt preUnique.txt".format(ip))
 
 if count > 0:
-	if len(path.split("_")) = 1:
+	if len(path.split("_")) == 1:
 		print("\n-+- {} tailored passwords generated -+-".format(count))
 		print("\n#########################################")
 		print("### password list saved to fuzzes.txt ###")
