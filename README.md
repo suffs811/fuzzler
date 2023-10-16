@@ -7,7 +7,7 @@ Fuzzler executes the following three steps to create wordlists:
 2.	Fuzzler utilizes Natural Language Processing to find synonyms of the words collected in step 1 and then adds them to the wordlist.
 3.	Fuzzler uses hashcat to fuzz the wordlist by transforming the words (lowercase, uppercase, capitalized, all capitalized except the first letter, reversed, digits 0-99 prepended/appended, and translated to 1337 speak).
 
-These operations allow Fuzzler to generate incredibly sophisticated wordlists that are more likely to represent the passwords used by employees and services of the business/organization than traditional wordlists. 
+These operations allow Fuzzler to generate incredibly sophisticated wordlists that better represent the passwords used by employees and services of the business/organization than traditional wordlists. 
 
 Feel free to break Fuzzler and let me know how I can make it better!
 
