@@ -1,6 +1,6 @@
 [![fuzzler-logo](https://github.com/suffs811/writeups/blob/main/fuzzler-imgs/fuzzler-small.jpg)
 # Fuzzler
-Fuzzler is a linux pentesting tool that generates tailored password lists from webpages using Artificial Intelligence/Natural Language Processing. 
+Fuzzler is a penetration testing tool that generates tailored password lists from webpages using Artificial Intelligence/Natural Language Processing. 
 
 Fuzzler executes the following three steps to create wordlists:
 1.	Fuzzler crawls the given webpage using CeWL to identify words relevant to that business or organization.
