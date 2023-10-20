@@ -2,6 +2,8 @@
 # Fuzzler
 Fuzzler is a penetration testing tool that generates tailored password lists from webpages using Artificial Intelligence/Natural Language Processing. 
 
+>Video walkthrough can be found [here](https://www.youtube.com/watch?v=f6hT4JqDRZY)
+
 Fuzzler executes the following three steps to create wordlists:
 1.	Fuzzler crawls the given webpage using CeWL to identify words relevant to that business or organization.
 2.	Fuzzler utilizes Natural Language Processing to find synonyms of the words collected in step 1 and then adds them to the wordlist.
