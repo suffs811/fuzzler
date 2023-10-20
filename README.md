@@ -14,7 +14,7 @@ Feel free to break Fuzzler and let me know how I can make it better!
 ## usage
 download Fuzzler:
 
-`got clone https://www.github.com/suffs811/fuzzler.git`
+`git clone https://www.github.com/suffs811/fuzzler.git`
 
 use fuzzler to generate wordlist:
 
