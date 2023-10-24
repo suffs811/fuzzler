@@ -25,8 +25,8 @@ use fuzzler to generate wordlist:
 **the final password list will be in 'fuzzes.txt'**
 
 
-## Other Fuzzler tools
-The Fuzzler Limited - Chrome Extension can be found [here](https://github.com/suffs811/fuzzler-ext)
+## other Fuzzler tools
+the Fuzzler Limited - Chrome Extension can be found [here](https://github.com/suffs811/fuzzler-ext)
 
 ## credit and license
 Copyright (c) 2023 suffs811
