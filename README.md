@@ -24,6 +24,8 @@ use fuzzler to generate wordlist:
 
 **the final password list will be in 'fuzzes.txt'**
 
+## optional: download the latest package from PyPi
+`pip install fuzzler`
 
 ## other Fuzzler tools
 the Fuzzler Limited - Chrome Extension can be found [here](https://github.com/suffs811/fuzzler-ext)
