@@ -20,7 +20,7 @@ download Fuzzler:
 
 use fuzzler to generate wordlist:
 
-`python3 fuzzler.py -t 10.10.10.10 -p 8080` 
+`python3 fuzzler.py -t <target-ip> -p <target-port>` 
 
 **the final password list will be in 'fuzzes.txt'**
 
